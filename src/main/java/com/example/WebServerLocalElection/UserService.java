@@ -4,7 +4,6 @@ package com.example.WebServerLocalElection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.ArrayList;
 
 @Service
 public class UserService  {
@@ -53,8 +52,8 @@ public class UserService  {
 
     // Проверка дали потребителят е вече гласувал
     public boolean hasUserVoted(String verificationCode) {
-        User user = userRepository.findByCode(verificationCode); // метод в репозитория, който връща потребителя по кода на верификацията
-        return user != null && user.getVote() != 0; // Връща true ако потребителят е гласувал (гласът е различен от 0)
+        User user = userRepository.findByCode(verificationCode);
+        return user != null && user.getVote() != 0;
     }
 
     // Обновяване на гласа за кандидата в базата данни

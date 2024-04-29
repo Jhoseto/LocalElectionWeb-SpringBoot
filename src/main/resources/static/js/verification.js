@@ -10,7 +10,7 @@ function confirmVerification() {
     };
 
 
-    fetch('https://localhost:8443/verification', {
+    fetch('https://192.168.1.3:2662/verification', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ function confirmVerification() {
             document.getElementById('VerificationMessages').innerText = 'Верификацията е успешена!';
             document.getElementById('VerificationMessages').style.color = 'green';
             document.getElementById('verificationCode').value = '';
-            window.location.href = 'VotePage.html';
+            window.location.href = 'votePage';
         } else {
 
             console.error('Verification failed:', response.statusText);

@@ -4,22 +4,45 @@ package com.example.WebServerLocalElection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 
 
-@RestController
+@Controller
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+    private final EmailService emailService;
 
     @Autowired
-    private EmailService emailService;
+    public UserController(UserService userService, EmailService emailService) {
+        this.userService = userService;
+        this.emailService = emailService;
+    }
+
+    @GetMapping("/")
+    public String indexPage() {
+        return "index";
+    }
+
+    @GetMapping("/verificationPage")
+    public String verPage() {
+        return "verificationPage";
+    }
+
+    @GetMapping("/votePage")
+    public String votePage() {
+        return "votePage";
+    }
+
+    @GetMapping("/info")
+    public String infoPage() {
+        return "info";
+    }
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
@@ -102,7 +125,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/info")
+    @GetMapping("/getInfo")
     public ResponseEntity<List<User>> getAllUsersInfo() {
         // Извличане на всички данни от базата данни
         List<User> allUserInfo = userService.getAllUserInfo();
@@ -122,7 +145,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
-
-
 }
 

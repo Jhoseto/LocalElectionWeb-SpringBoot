@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function sendVoteToServer(candidateCode, verificationCode) {
-        fetch('https://localhost:8443/vote', {
+        fetch('https://192.168.1.3:2662/vote', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
