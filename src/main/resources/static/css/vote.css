@@ -1,0 +1,156 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background-color: #132a1f;
+    font-family: 'Droid Serif', serif;
+}
+.candidates-container {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+h1 {
+    text-align: center;
+    font-size: 35px;
+    color: #f6f6f6; /* цвят на текста */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* добавяне на сянка */
+}
+
+.candidate {
+    display: inline-block;
+    margin: 0 90px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s, box-shadow 0.5s;
+    cursor: pointer;
+    animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-1110px); /* Начална позиция на анимацията */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Крайна позиция на анимацията */
+    }
+}
+.candidate:hover {
+    transform: scale(1.5); /* Увеличаване на кандидата с 50% */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Сянка */
+}
+
+.candidate img {
+    width: 260px;
+    height: 400px;
+    border-radius: 10px 10px 0 0;
+}
+
+.candidate-info {
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 0 0 10px 10px;
+}
+/* Стилизация на радио бутоните */
+
+input[type="radio"] {
+/* Скриване на стандартния радио бутон */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Задаване на размери */
+    width: 35px;
+    height: 35px;
+    /* Стилизация на външния вид на радио бутон */
+    border: 2px solid #333;
+    border-radius: 50%; /* За кръгъл вид */
+    cursor: pointer;
+    position: relative;
+}
+
+/* Стилизация на отметката за гласуване */
+input[type="radio"]:checked::after {
+    content: ''; /* Добавяне на съдържание */
+    position: absolute;
+    top: 50%; /* Позициониране на центъра на контейнера */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Центриране */
+    width: 20px;
+    height: 20px;
+    background-color: #9a804a; /* Цвят на отметката */
+    border-radius: 50%; /* За кръгъл вид */
+}
+
+/* Стилизация на контейнера с кандидатите */
+.candidates-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Стилизация на контейнера с кандидат */
+.candidate {
+    text-align: center;
+    margin: 0 60px;
+}
+
+/* Стилизация на кандидатната информация */
+.candidate-info {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* Стилизация на бутона за гласуване */
+button[type="submit"] {
+    font-family: 'Droid Serif', serif;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #9a804a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #9a804a;
+}
+#permanentMessage {
+    text-align: center;
+    margin-top: 20px;
+    background-color: #132a1f; /* Цвят на фона */
+    padding: 10px; /* Подходящо разстояние от съдържанието до ръбовете на контейнера */
+    border-radius: 5px; /* Закръглени ръбове */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Сянка */
+}
+
+#permanentMessage p {
+    margin: 0; /* Премахва вътрешните отстъпи на параграфа */
+    color: #ffffff; /* Цвят на текста */
+    font-size: 16px; /* Големина на шрифта */
+}
+.info-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.info-panel .info-text {
+    text-align: center;
+}
+
+.info-panel h2 {
+    margin-bottom: 10px;
+}
+
+.info-panel p {
+    margin: 0;
+}

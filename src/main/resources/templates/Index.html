@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="../static/css/Index.css">
+</head>
+<body>
+<!-- Начална страница -->
+<div class="start-page">
+    <div class="container">
+        <a href="info.html" class="btn">Информация за гласуването</a>
+    </div>
+    <h1>МЕСТНИ ИЗБОРИ</h1>
+    <h2>2023</h2>
+    <h3>Община Смолян</h3>
+</div>
+
+<!-- Форма за регистрация -->
+<div class="form-container">
+    <h2>Регистрационна форма</h2>
+    <form id="registrationForm">
+        <label for="Name">Име:</label>
+        <input class="form-field w-input" maxlength="256" name="Name" data-name="Name" placeholder="Въведете трите си имена..." type="text" id="Name" required pattern="^[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$"
+               title="Въведете трите си имена, като всяко започва с главна буква на кирилица"/>
+        <div class="error-message" id="nameError"></div>
+        <label for="Age">Години:</label>
+        <input class="form-field w-input" maxlength="256" name="Age" data-name="Age" placeholder="Въведете вашата възраст в години ..." type="number" id="Age" required min="18"
+               title="Вашата възраст трябва да бъде минимум 18"/>
+        <div class="error-message" id="ageError"></div>
+        <label for="Email">Имейл:</label>
+        <input class="form-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Въведете вашата електронна поща..." type="email" id="Email" required
+               title="Въведете валиден имейл адрес"/>
+        <div class="error-message" id="emailError"></div>
+        <label for="Password">Парола:</label>
+        <input class="form-field w-input" maxlength="256" name="Password" data-name="Password" placeholder="Въведете вашата парола..." type="password" id="Password" required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+               title="Паролата трябва да съдържа поне 6 символа, включително поне една главна буква и поне една цифра"/>
+        <div class="error-message" id="passwordError"></div>
+        <label for="ConfirmPassword">Потвърждаване на парола:</label>
+        <input class="form-field w-input" maxlength="256" name="ConfirmPassword" data-name="ConfirmPassword" placeholder="Потвърдете вашата парола..." type="password" id="ConfirmPassword" required minlength="6"
+               title="Съвпадението на паролите е невалидно" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" oninput="checkPasswordMatch()">
+        <div class="error-message" id="confirmPassError"></div>
+        <input type="button" value="Потвърди" onclick="submitForm()">
+
+        <div id="registrationMessages"></div>
+    </form>
+</div>
+
+<!-- Делителна линия -->
+<div class="divider"></div>
+
+<!-- Форма за вход -->
+<div class="form-container">
+    <h2>Вход</h2>
+    <form id="LoginForm">
+        <label for="LoginEmail">Имейл:</label>
+        <input type="email" id="LoginEmail" name="email" placeholder="Въведете вашия имейл" required>
+        <label for="LoginPassword">Парола:</label>
+        <input type="password" id="LoginPassword" name="password" placeholder="Въведете вашата парола" required>
+        <input type="button" value="Вход" onclick="loginForm()">
+
+        <div id="loginMessages"></div>
+    </form>
+</div>
+
+<!-- Футър -->
+<div class="footer">
+    <div class="w-container">
+        <div class="w-row">
+            <div class="spc w-col">
+                <h5 class="heading">Правни форми</h5>
+                <p>-------------------------------------------------<br/>------------------------------------------------------<br/>----------------------------<br/>------------------------------------------------------<br/>------------------------------------------</p>
+            </div>
+            <div class="spc w-col">
+                <h5 class="heading-2">Линкове</h5>
+                <a href="https://www.cik.bg" class="footer-link" target="_blank">Централна Избирателна Комисия</a>
+                <a href="https://rik22.cik.bg/ns202304" class="footer-link" target="_blank">Районна Избирателна Комисия</a>
+                <a href="https://www.smolyan.bg/bg/home" class="footer-link" target="_blank">Община Смолян</a>
+                <a href="https://sm.government.bg/" class="footer-link" target="_blank">Областна администрация Смолян</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../static/JavaScript/indexJS.js"></script>
+</body>
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'M9fbrrQmqM6MqRc9Q';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() { (w[c].q = w[c].q || []).push(arguments); };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+</body>
+</html>

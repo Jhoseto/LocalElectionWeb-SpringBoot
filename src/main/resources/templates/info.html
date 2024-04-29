@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Info Page</title>
+    <link rel="stylesheet" href="../static/css/Info.css">
+</head>
+<body>
+<!-- Панел за таблицата -->
+<div class="table-panel">
+    <!-- Бутон за извличане на данни -->
+    <button id="fetchDataButton">Извлечи данните</button>
+
+    <!-- Таблица, в която ще се показват данните -->
+    <table id="infoTable">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>code</th>
+            <th>vote</th>
+            <!-- Други колони, ако е необходимо -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Тук ще бъдат вмъкнати редовете с данни от базата данни -->
+        </tbody>
+    </table>
+</div>
+<div class="second-panel">
+    <canvas id="myChart" width="400" height="400"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Включете скрипта, който ще извършва заявката към сървъра и ще показва данните в таблицата -->
+<script src="../static/JavaScript/infoScript.js"></script>
+</body>
+</html>

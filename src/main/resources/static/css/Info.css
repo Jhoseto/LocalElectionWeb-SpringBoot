@@ -1,0 +1,86 @@
+/* Стилове за панела на таблицата */
+.table-panel {
+    position: absolute; /* Фиксира панела на определена позиция */
+    left: 320px; /* Отстъп от лявата страна */
+    top: 110px; /* Отстъп отгоре */
+    border: 1px solid #ddd; /* Стилове на границата на панела */
+    border-radius: 5px; /* Закръгляне на ъглите на панела */
+    padding: 27px; /* Добавяне на вътрешен отстъп на панела */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Сянка на панела */
+    max-width: 800px; /* Максимална ширина на панела */
+}
+/* Стилове за бутона за извличане на данни */
+#fetchDataButton {
+    display: block; /* Показване като блоков елемент */
+    width: 200px; /* Ширина на бутона */
+    margin: 0 auto 20px; /* Центриране на бутона и външен отстъп отдолу */
+    padding: 10px; /* Вътрешен отстъп на бутона */
+    border: none; /* Без граница */
+    border-radius: 5px; /* Закръгляне на ъглите */
+    background-color: #9a804a; /* Цвят на фона */
+    color: white; /* Цвят на текста */
+    font-size: 16px; /* Големина на шрифта */
+    cursor: pointer; /* Промяна на курсора при хостване на бутона */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Сянка на бутона */
+}
+/* Стилове за втория панел вдясно */
+.second-panel {
+    position: absolute; /* Фиксира втория панел на определена позиция */
+    right: 330px; /* Отстъп от дясната страна */
+    top: 110px; /* Отстъп отгоре */
+    width: 470px; /* Ширина на втория панел */
+    height: 460px; /* Височина на втория панел */
+    border: 1px solid #ddd; /* Стилове на границата на панела */
+    border-radius: 5px; /* Закръгляне на ъглите на панела */
+    padding: 20px; /* Променете стойността на padding */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Сянка на панела */
+}
+
+/* Стилове за текста на бутона */
+#fetchDataButton:hover {
+    background-color: #9a804a; /* Промяна на цвета при хостване на бутона */
+}
+/* Стилове за таблицата */
+#infoTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+/* Стилове за заглавията на колоните */
+#infoTable th {
+    background-color: #9a804a;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+/* Стилове за редовете */
+#infoTable td, #infoTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+/* Стилове за четни и нечетни редове */
+#infoTable tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+#infoTable tbody tr:hover {
+    background-color: #9d9d9d;
+}
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Променете justify-content на flex-start */
+}
+
+.chart-canvas {
+    margin: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 480px; /* Добавете ширина на баровете */
+    height: 80px;
+}
+
+.chart-canvas:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+

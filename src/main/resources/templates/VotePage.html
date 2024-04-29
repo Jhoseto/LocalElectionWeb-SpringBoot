@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гласуване за кмет на Община Смолян</title>
+    <link rel="stylesheet" href="../static/css/vote.css"> <!-- Връзка към външен CSS файл -->
+</head>
+<body>
+<h1 style="text-align: center;">Кандидати за кмет на Община Смолян</h1>
+
+<div class="candidates-container">
+    <div class="candidate" data-url="https://bg.wikipedia.org/wiki/%D0%9C%D0%B8%D1%85%D0%B0%D0%BB_%D0%9A%D0%B0%D0%BC%D0%B1%D0%B0%D1%80%D0%B5%D0%B2">>
+        <img src="https://i.imgur.com/CtnjKI0.jpg" alt="kambarev">
+        <div class="candidate-info">
+            <h2>Михал Камбарев</h2>
+            <p>Продължаваме Промяната</p>
+            <input type="radio" name="candidate" value="1">
+        </div>
+    </div>
+
+    <div class="candidate" data-url="https://bg.wikipedia.org/wiki/%D0%9D%D0%B8%D0%BA%D0%BE%D0%BB%D0%B0%D0%B9_%D0%9C%D0%B5%D0%BB%D0%B5%D0%BC%D0%BE%D0%B2">>
+        <img src="https://i.imgur.com/uoyUMlD.jpg" alt="melemov">
+        <div class="candidate-info">
+            <h2>Николай Мелемов</h2>
+            <p>ГЕРБ - СДС</p>
+            <input type="radio" name="candidate" value="2">
+        </div>
+    </div>
+
+    <div class="candidate" data-url="https://www.vesti.bg/bulgaria/koj-e-stefan-sabrutev-naznachen-za-oblasten-upravitel-na-smolian-6148753">>
+        <img src="https://i.imgur.com/uChV0vm.jpg" alt="sabrutev">
+        <div class="candidate-info">
+            <h2>Стефан Събрутев</h2>
+            <p>Движение "Нашият град"</p>
+            <input type="radio" name="candidate" value="3">
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="permanentMessage" style="text-align: center; margin-top: 20px;">
+    <p>Гласувайте, като маркирате кръглото поле под избрания от вас кандидат. След което натиснето бутона за потвърждение.</p>
+</div>
+<div id="voteMessages" style="text-align: center; margin-top: 25px;"></div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <button type="submit">Потвърдете вашият избор</button>
+</div>
+<script src="../static/JavaScript/vote.js"></script>
+</body>
+</html>

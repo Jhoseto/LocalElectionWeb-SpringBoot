@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        /* Стилове за страницата */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+        }
+
+        /* Стилове за началната страница */
+        .start-page {
+            height: 100vh;
+            background: url('https://i.imgur.com/gNFUSnU.jpg') no-repeat center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: white;
+            font-family: 'Droid Serif', serif;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* Стилове за заглавните елементи */
+        .start-page h1, .start-page h2, .start-page h3 {
+            font-family: 'Droid Serif', serif;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .start-page h1 {
+            font-size: 5em;
+            letter-spacing: 4px;
+            margin-bottom: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: perspective(500px) rotateX(50deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .start-page h2 {
+            font-size: 3.5em;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 8px 8px 4px rgba(0, 0, 0, 0.3);
+            transform: perspective(100px) rotateX(15deg);
+        }
+
+        .start-page h3 {
+            font-size: 2em;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: perspective(100px) rotateX(10deg);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        /* Анимация за заглавията */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .start-page h1, .start-page h2, .start-page h3 {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Делителна линия */
+        .divider {
+            width: 450px;
+            height: 2px;
+            background-color: rgba(25, 155, 255, 15.5);
+            margin: 50px auto;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        /* Стилове за формата за регистрация */
+        .form-container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-bottom: 10px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-container input[type="text"]:focus,
+        .form-container input[type="number"]:focus,
+        .form-container input[type="email"]:focus,
+        .form-container input[type="password"]:focus {
+            border-color: #007bff;
+        }
+
+        .form-container input[type="button"] {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Стилове за футъра */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .w-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .w-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .w-col {
+            width: 45%;
+        }
+
+        .spc {
+            margin-bottom: 30px;
+        }
+
+        .heading, .heading-2 {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .footer-link {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<!-- Начална страница -->
+<div class="start-page">
+    <h1>МЕСТНИ ИЗБОРИ</h1>
+    <h2>2023</h2>
+    <h3>Община Смолян</h3>
+</div>
+
+<!-- Форма за регистрация -->
+<div class="form-container">
+    <h2>Регистрационна форма</h2>
+    <form id="registrationForm">
+        <label for="Name">Име:</label>
+        <input class="form-field w-input" maxlength="256" name="Name" data-name="Name" placeholder="Въведете трите си имена..." type="text" id="Name" required pattern="^[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}\s[А-Я][а-я]{1,}$"
+               title="Въведете трите си имена, като всяко започва с главна буква на кирилица"/>
+        <div class="error-message" id="nameError"></div>
+        <label for="Age">Години:</label>
+        <input class="form-field w-input" maxlength="256" name="Age" data-name="Age" placeholder="Въведете вашата възраст в години ..." type="number" id="Age" required min="18"
+               title="Вашата възраст трябва да бъде минимум 18"/>
+        <div class="error-message" id="ageError"></div>
+        <label for="Email">Имейл:</label>
+        <input class="form-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Въведете вашата електронна поща..." type="email" id="Email" required
+               title="Въведете валиден имейл адрес"/>
+        <div class="error-message" id="emailError"></div>
+        <label for="Password">Парола:</label>
+        <input class="form-field w-input" maxlength="256" name="Password" data-name="Password" placeholder="Въведете вашата парола..." type="password" id="Password" required minlength="6" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+               title="Паролата трябва да съдържа поне 6 символа, включително поне една главна буква и поне една цифра"/>
+        <div class="error-message" id="passwordError"></div>
+        <label for="ConfirmPassword">Потвърждаване на парола:</label>
+        <input class="form-field w-input" maxlength="256" name="ConfirmPassword" data-name="ConfirmPassword" placeholder="Потвърдете вашата парола..." type="password" id="ConfirmPassword" required minlength="6"
+               title="Съвпадението на паролите е невалидно" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$" oninput="checkPasswordMatch()">
+        <div class="error-message" id="confirmPassError"></div>
+        <input type="button" value="Потвърди" onclick="submitForm()">
+
+        <div id="registrationMessages"></div>
+    </form>
+</div>
+
+<!-- Делителна линия -->
+<div class="divider"></div>
+
+<!-- Форма за вход -->
+<div class="form-container">
+    <h2>Вход</h2>
+    <form id="LoginForm">
+        <label for="LoginEmail">Имейл:</label>
+        <input type="email" id="LoginEmail" name="email" placeholder="Въведете вашия имейл" required>
+        <label for="LoginPassword">Парола:</label>
+        <input type="password" id="LoginPassword" name="password" placeholder="Въведете вашата парола" required>
+        <input type="button" value="Вход" onclick="loginForm()">
+
+        <div id="loginMessages"></div>
+    </form>
+</div>
+
+<!-- Футър -->
+<div class="footer">
+    <div class="w-container">
+        <div class="w-row">
+            <div class="spc w-col">
+                <h5 class="heading">Правни форми</h5>
+                <p>-------------------------------------------------<br/>------------------------------------------------------<br/>----------------------------<br/>------------------------------------------------------<br/>------------------------------------------</p>
+            </div>
+            <div class="spc w-col">
+                <h5 class="heading-2">Линкове</h5>
+                <a href="https://www.cik.bg" class="footer-link" target="_blank">Централна Избирателна Комисия</a>
+                <a href="https://rik22.cik.bg/ns202304" class="footer-link" target="_blank">Районна Избирателна Комисия</a>
+                <a href="https://www.smolyan.bg/bg/home" class="footer-link" target="_blank">Община Смолян</a>
+                <a href="https://sm.government.bg/" class="footer-link" target="_blank">Областна администрация Смолян</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript код -->
+<script>
+    // Дефиниции на променливите за елементите на формата
+    var nameInput = document.getElementById("Name");
+    var ageInput = document.getElementById("Age");
+    var emailInput = document.getElementById("Email");
+    var passwordInput = document.getElementById("Password");
+    var confirmPasswordInput = document.getElementById("ConfirmPassword");
+
+    // Функция за валидация на формата
+    function validateForm() {
+        // Проверка за валидност на името
+        if (nameInput.validity.patternMismatch) {
+            nameError.textContent = "Моля, въведете трите ви имена на кирилица, като всяко от да започва с главна буква.";
+            nameError.style.color = "red";
+        } else {
+            nameError.textContent = "";
+        }
+
+        // Проверка за валидност на възрастта
+        if (ageInput.validity.rangeUnderflow) {
+            ageError.textContent = "Трябва да имате навършени 18 години, за да се регистрирате.";
+            ageError.style.color = "red";
+        } else {
+            ageError.textContent = "";
+        }
+
+        // Проверка за валидност на имейла
+        if (emailInput.validity.typeMismatch) {
+            emailError.textContent = "Моля, въведете валиден имейл адрес.";
+            emailError.style.color = "red";
+        } else {
+            emailError.textContent = "";
+        }
+
+        // Проверка за валидност на паролата
+        if (passwordInput.validity.patternMismatch) {
+            passwordError.textContent = "Паролата трябва да е на латиница, като съдържа поне 6 символа, включително поне една главна буква и поне една цифра.";
+            passwordError.style.color = "red";
+        } else {
+            passwordError.textContent = "";
+        }
+
+        // Проверка за съвпадение на паролите
+        if (confirmPasswordInput.validity.patternMismatch) {
+            confirmPassError.textContent = "Паролите не съвпадат.";
+            confirmPassError.style.color = "red";
+        } else {
+            confirmPassError.textContent = "";
+        }
+        return true;
+    }
+
+    // Добавяне на събитие, което да извиква функцията за валидация при събития input или change
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("registrationForm");
+        form.addEventListener("input", validateForm);
+        form.addEventListener("change", validateForm);
+    });
+
+    // Изпращане на Регистрационната форма
+    // Изпращане на Регистрационната форма
+    function submitForm() {
+        // Извикване на функцията за валидация
+        if (!validateForm()) {
+            registrationMessages.innerText = "Моля, попълнете всички полета.";
+            registrationMessages.style.color = "red";
+            return false; // Прекратява изпращането на формата
+        }
+
+        // Извличане на данните от полетата на формата
+        var name = document.getElementById("Name").value;
+        var age = document.getElementById("Age").value;
+        var email = document.getElementById("Email").value;
+        var password = document.getElementById("Password").value;
+        var confirmPassword = document.getElementById("ConfirmPassword").value;
+
+        // Проверка за празни полета
+        if (name === "" || age === "" || email === "" || password === "" || confirmPassword === "") {
+            registrationMessages.innerText = "Моля, попълнете всички полета.";
+            registrationMessages.style.color = "red";
+            return false; // Прекратява изпращането на формата
+        }
+
+        var formData = {
+            name: name,
+            age: age,
+            email: email,
+            password: password
+        };
+
+        // Изпращане на данните към сървъра
+        fetch('https://localhost:8443/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => {
+            if (response.ok) {
+                console.log('Response:', response);
+                document.getElementById('registrationMessages').innerText = 'Регистрацията е успешна! Моля, проверете вашата електронна поща за повече информация!';
+                document.getElementById('registrationMessages').style.color = 'green';
+                // Изчистване на полетата на формата
+                document.getElementById('Name').value = '';
+                document.getElementById('Age').value = '';
+                document.getElementById('Email').value = '';
+                document.getElementById('Password').value = '';
+                document.getElementById('ConfirmPassword').value = '';
+            } else if (response.status === 400) {
+                console.error('Error:', response.statusText);
+                document.getElementById('registrationMessages').innerText = 'Регистрацията не беше успешна. Потребител с такъв имейл вече е регистриран.';
+            } else {
+                console.error('Error:', response.statusText);
+                document.getElementById('registrationMessages').innerText = 'Регистрацията не беше успешна. Моля, опитайте отново по-късно.';
+            }
+        })
+            .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('registrationMessages').innerText = 'Регистрацията не беше успешна. Моля, опитайте отново по-късно.';
+        });
+
+        // Връща false, за да предотврати презареждането на страницата
+        return false;
+    }
+
+
+
+    // Изпращане на Логин формата
+    function loginForm() {
+        var email = document.getElementById("LoginEmail").value;
+        var password = document.getElementById("LoginPassword").value;
+
+        var formData = {
+            email: email,
+            password: password
+        };
+
+        fetch('https://localhost:8443/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => {
+            if (response.ok) {
+                console.log('Response:', response);
+                document.getElementById('loginMessages').innerText = 'Входът е успешен!';
+                // Изчистване на полетата на формата
+                document.getElementById('LoginEmail').value = '';
+                document.getElementById('LoginPassword').value = '';
+                document.getElementById('loginMessages').style.color = 'green'; // Зелен цвят за успешен вход
+            } else if (response.status === 401) {
+                console.error('Error:', response.statusText);
+                document.getElementById('loginMessages').innerText = 'Грешен имейл или парола';
+                document.getElementById('loginMessages').style.color = 'red'; // Червен цвят за грешка в имейл или парола
+            } else {
+                console.error('Error:', response.statusText);
+                document.getElementById('loginMessages').innerText = 'Входът не беше успешен. Моля, опитайте отново по-късно.';
+                document.getElementById('loginMessages').style.color = 'red'; // Червен цвят за неуспешен вход
+            }
+        })
+            .catch(error => {
+            console.error('Error:', error);
+            document.getElementById('loginMessages').innerText = 'Входът не беше успешен. Моля, опитайте отново по-късно.';
+            document.getElementById('loginMessages').style.color = 'red'; // Червен цвят за неуспешен вход
+        });
+    }
+
+</script>
+</body>
+</html>

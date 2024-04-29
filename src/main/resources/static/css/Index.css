@@ -1,0 +1,221 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    background-color: #132a1f;
+}
+.container {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; /* Задайте височина спрямо нуждите ви */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #9a804a; /* Цвят на фона */
+    color: #fff; /* Цвят на текста */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    position: relative;
+    bottom: 190px;
+    right: -800px;
+    z-index: 9999;
+}
+
+.btn:hover {
+    background-color: #132a1f; /* Цвят на фона при ховър */
+}
+
+/* Стилове за началната страница */
+.start-page {
+    height: 100vh;
+    background: url('https://i.imgur.com/gNFUSnU.jpg') no-repeat center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #ffffff;
+    font-family: 'Droid Serif', serif;
+    text-align: center;
+    padding: 0 20px;
+    background-color: #132a1f;
+}
+
+/* Стилове за заглавните елементи */
+.start-page h1, .start-page h2, .start-page h3 {
+    font-family: 'Droid Serif', serif;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.start-page h1 {
+    font-size: 5em;
+    letter-spacing: 4px;
+    margin-bottom: 1px;
+    text-shadow: 2px 2px 4px rgba(19, 42, 31, 1);
+    transform: perspective(500px) rotateX(50deg);
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 1);
+    transition: transform 0.3s ease;
+}
+
+.start-page h2 {
+    font-size: 3.5em;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 8px 8px 4px rgba(0, 0, 0, 0.3);
+    transform: perspective(100px) rotateX(15deg);
+}
+
+.start-page h3 {
+    font-size: 2em;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transform: perspective(100px) rotateX(10deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+/* Анимация за заглавията */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.start-page h1, .start-page h2, .start-page h3 {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Делителна линия */
+.divider {
+    width: 450px;
+    height: 2px;
+    background-color: rgba(154, 128, 74, 15.5);
+    margin: 50px auto;
+    box-shadow: 0 0px 8px rgba(255, 255, 255, 1);
+    transition: transform 0.3s ease;
+}
+
+/* Стилове за формата за регистрация */
+.form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 1);
+    transition: transform 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-5px);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container label {
+    margin-bottom: 10px;
+    color: #666;
+    font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #9a804a;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="number"]:focus,
+.form-container input[type="email"]:focus,
+.form-container input[type="password"]:focus {
+    border-color: #9a804a;
+}
+
+.form-container input[type="button"] {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #9a804a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.form-container input[type="button"]:hover {
+    background-color: #9a804a;
+}
+
+/* Стилове за футъра */
+.footer {
+    background-color: #323b43;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.w-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.w-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.w-col {
+    width: 45%;
+}
+
+.spc {
+    margin-bottom: 30px;
+}
+
+.heading, .heading-2 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.footer-link {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}

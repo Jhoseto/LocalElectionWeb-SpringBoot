@@ -1,0 +1,76 @@
+/* Стилове за верификационната страница */
+
+body {
+    font-family: 'Droid Serif', serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #132a1f;
+}
+
+.container {
+    width: 400px;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    border-color: #9a804a;
+    box-shadow: 0 8px 8px rgba(255, 255, 255, 1);
+    transform: perspective(1200px) rotateX(15deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-1110px); /* Начална позиция на анимацията */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Крайна позиция на анимацията */
+    }
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: #333;
+    text-align: center;
+}
+
+.container input[type="text"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.container button {
+    font-family: 'Droid Serif', serif;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #9a804a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #9a804a;
+}
