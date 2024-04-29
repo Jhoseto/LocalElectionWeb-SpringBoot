@@ -1,11 +1,15 @@
-package com.example.WebServerLocalElection;
+package com.example.WebServerLocalElection.Services.ServicesImpl;
+
+import com.example.WebServerLocalElection.Services.CodeGenerator;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-public class CodeGenerator {
+@Service
+public class CodeGeneratorImpl implements CodeGenerator {
 
     // Метод за генериране на шест символен код
-    public static String generateCode() {
+    public String generateCode() {
         // Дефиниране на символите, които ще бъдат използвани в кода
         String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder code = new StringBuilder();

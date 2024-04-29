@@ -1,12 +1,12 @@
-package com.example.WebServerLocalElection;
+package com.example.WebServerLocalElection.ViewModels;
 
-public class VoteRequest {
+public class VoteViewModel {
     private int candidateCode;
     private String verificationCode;
 
-    public VoteRequest() {};
 
-    public VoteRequest(int candidateCode, String verificationCode) {
+    public VoteViewModel(int candidateCode,
+                         String verificationCode) {
         this.candidateCode = candidateCode;
         this.verificationCode = verificationCode;
     }
@@ -15,15 +15,17 @@ public class VoteRequest {
         return candidateCode;
     }
 
-    public void setCandidateCode(int candidateCode) {
+    public VoteViewModel setCandidateCode(int candidateCode) {
         this.candidateCode = candidateCode;
+        return this;
     }
 
     public String getVerificationCode() {
         return verificationCode;
     }
 
-    public void setVerificationCode(String verificationCode) {
+    public VoteViewModel setVerificationCode(String verificationCode) {
         this.verificationCode = verificationCode;
+        return this;
     }
 }

@@ -1,6 +1,12 @@
-package com.example.WebServerLocalElection;
+package com.example.WebServerLocalElection.Controllers;
 
 
+import com.example.WebServerLocalElection.Models.UserEntity;
+import com.example.WebServerLocalElection.Services.ServicesImpl.EmailServiceImpl;
+import com.example.WebServerLocalElection.Services.ServicesImpl.UserServiceImpl;
+import com.example.WebServerLocalElection.ViewModels.LoginViewModel;
+import com.example.WebServerLocalElection.ViewModels.VerificationViewModel;
+import com.example.WebServerLocalElection.ViewModels.VoteViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,65 +17,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 
-
 @Controller
-public class UserController {
+public class ActionsController {
 
-    private final UserService userService;
-    private final EmailService emailService;
+    private final UserServiceImpl userServiceImpl;
+    private final EmailServiceImpl emailServiceImpl;
 
     @Autowired
-    public UserController(UserService userService, EmailService emailService) {
-        this.userService = userService;
-        this.emailService = emailService;
+    public ActionsController(UserServiceImpl userServiceImpl, EmailServiceImpl emailServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+        this.emailServiceImpl = emailServiceImpl;
     }
 
-    @GetMapping("/")
-    public String indexPage() {
-        return "index";
-    }
 
-    @GetMapping("/verificationPage")
-    public String verPage() {
-        return "verificationPage";
-    }
-
-    @GetMapping("/votePage")
-    public String votePage() {
-        return "votePage";
-    }
-
-    @GetMapping("/info")
-    public String infoPage() {
-        return "info";
-    }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody User user) {
-        String email = user.getEmail();
+    public ResponseEntity<String> registerUser(@RequestBody UserEntity userEntity) {
+        String email = userEntity.getEmail();
 
-        if (userService.isEmailAlreadyRegistered(email)) {
+        if (userServiceImpl.isEmailAlreadyRegistered(email)) {
             System.out.println(HttpStatus.BAD_REQUEST.toString());
             return new ResponseEntity<>("Email is already registered", HttpStatus.BAD_REQUEST);
         } else {
 
-            userService.createUser(user);
-            System.out.println("New user registered - " + user.getName() + " " + user.getEmail());
+            userServiceImpl.createUser(userEntity);
+            System.out.println("New user registered - " + userEntity.getName() + " " + userEntity.getEmail());
 
             // Изпратете имейл чрез emailService
-            emailService.sendRegistrationEmail(user);
+            emailServiceImpl.sendRegistrationEmail(userEntity);
 
             return ResponseEntity.ok().body("NEW User registered successfully");
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody LoginRequest loginRequest) {
-        String email = loginRequest.getEmail();
-        String password = loginRequest.getPassword();
+    public ResponseEntity<String> loginUser(@RequestBody LoginViewModel loginViewModel) {
+        String email = loginViewModel.getEmail();
+        String password = loginViewModel.getPassword();
 
         // Проверка на валидността на потребителските данни
-        boolean isValidUser = userService.isValidUser(email, password);
+        boolean isValidUser = userServiceImpl.isValidUser(email, password);
 
         if (isValidUser) {
             return ResponseEntity.ok().body("Login successful");
@@ -79,11 +66,11 @@ public class UserController {
     }
 
     @PostMapping("/verification")
-    public ResponseEntity<String> verification(@RequestBody VerificationRequest verificationRequest) {
-        String verificationCode = verificationRequest.getCode();
+    public ResponseEntity<String> verification(@RequestBody VerificationViewModel verificationViewModel) {
+        String verificationCode = verificationViewModel.getCode();
 
         // Проверка на валидността на потребителските данни
-        boolean isValidCode = userService.isValidCode(verificationCode);
+        boolean isValidCode = userServiceImpl.isValidCode(verificationCode);
 
         if (isValidCode) {
             return ResponseEntity.ok().body("Valid Code");
@@ -92,26 +79,26 @@ public class UserController {
         }
     }
     @PostMapping("/vote")
-    public ResponseEntity<String> vote(@RequestBody VoteRequest voteRequest) {
-        String verificationCode = voteRequest.getVerificationCode();
-        int candidateCode = voteRequest.getCandidateCode();
+    public ResponseEntity<String> vote(@RequestBody VoteViewModel voteViewModel) {
+        String verificationCode = voteViewModel.getVerificationCode();
+        int candidateCode = voteViewModel.getCandidateCode();
 
         System.out.println(verificationCode +" "+candidateCode);
         // Проверка на валидността на верификационния код
-        boolean isValidCode = userService.isValidCode(verificationCode);
+        boolean isValidCode = userServiceImpl.isValidCode(verificationCode);
 
         if (isValidCode) {
             // Проверка дали потребителят е вече гласувал
-            boolean hasVoted = userService.hasUserVoted(verificationCode);
+            boolean hasVoted = userServiceImpl.hasUserVoted(verificationCode);
 
             if (!hasVoted) {
                 // Обновяване на гласа за кандидата в базата данни
-                userService.voteForCandidate(candidateCode, verificationCode);
+                userServiceImpl.voteForCandidate(candidateCode, verificationCode);
 
                 // Изпращане на имейл до потребителя
-                String userEmail = userService.getEmailByVerificationCode(verificationCode);
+                String userEmail = userServiceImpl.getEmailByVerificationCode(verificationCode);
                 if (userEmail != null) {
-                    emailService.sendVoteEmail(userEmail, candidateCode);
+                    emailServiceImpl.sendVoteEmail(userEmail, candidateCode);
                 } else {
                     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Грешка при изпращане на имейл: потребителят не е намерен.");
                 }
@@ -126,21 +113,21 @@ public class UserController {
     }
 
     @GetMapping("/getInfo")
-    public ResponseEntity<List<User>> getAllUsersInfo() {
+    public ResponseEntity<List<UserEntity>> getAllUsersInfo() {
         // Извличане на всички данни от базата данни
-        List<User> allUserInfo = userService.getAllUserInfo();
+        List<UserEntity> allUserEntityInfo = userServiceImpl.getAllUserInfo();
 
         // Извеждане на данните в конзолата
         System.out.println("All User Information:");
-        for (User user : allUserInfo) {
-            System.out.println("User ID: " + user.getId());
-            System.out.println("Name: " + user.getName());
-            System.out.println("Email: " + user.getEmail());
-            // Други данни, които искате да изпечатате
+        for (UserEntity userEntity : allUserEntityInfo) {
+            System.out.println("User ID: " + userEntity.getId());
+            System.out.println("Name: " + userEntity.getName());
+            System.out.println("Email: " + userEntity.getEmail());
+
         }
 
-        if (!allUserInfo.isEmpty()) {
-            return ResponseEntity.ok().body(allUserInfo);
+        if (!allUserEntityInfo.isEmpty()) {
+            return ResponseEntity.ok().body(allUserEntityInfo);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

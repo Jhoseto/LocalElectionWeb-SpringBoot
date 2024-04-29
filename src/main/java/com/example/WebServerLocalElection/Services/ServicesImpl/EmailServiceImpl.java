@@ -1,6 +1,8 @@
-package com.example.WebServerLocalElection;
+package com.example.WebServerLocalElection.Services.ServicesImpl;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.WebServerLocalElection.Services.EmailService;
+import com.example.WebServerLocalElection.Models.UserEntity;
+import com.example.WebServerLocalElection.ViewModels.VoteViewModel;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -10,28 +12,29 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Service
-public class EmailService {
+public class EmailServiceImpl implements EmailService {
 
     private final JavaMailSender javaMailSender;
+    private UserServiceImpl userServiceImpl;
+    private static VoteViewModel voteViewModel;
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private static VoteRequest voteRequest;
-    @Autowired
-    public EmailService(JavaMailSender javaMailSender) {
+    public EmailServiceImpl(JavaMailSender javaMailSender, UserServiceImpl userServiceImpl) {
         this.javaMailSender = javaMailSender;
+        this.userServiceImpl = userServiceImpl;
     }
 
-    public void sendRegistrationEmail(User user) {
+
+
+    @Override
+    public void sendRegistrationEmail(UserEntity userEntity) {
         String subject = "МЕСТНИ ИЗБОРИ 2023 Регистрационна форма";
-        String verificationCode = userService.getVerificationCodeByEmail(user.getEmail());
+        String verificationCode = userServiceImpl.getVerificationCodeByEmail(userEntity.getEmail());
         String text = "Вашата регистрация в платформа за провеждане на местни избори е УСПЕШНА.\n" +
                 "Вашите данни са:\n" +
-                "Име: " + user.getName() + "\n" +
-                "Години: " + user.getAge() + "\n" +
-                "Email: " + user.getEmail() + "\n" +
-                "Парола: " + user.getPassword() + "\n" +
+                "Име: " + userEntity.getName() + "\n" +
+                "Години: " + userEntity.getAge() + "\n" +
+                "Email: " + userEntity.getEmail() + "\n" +
+                "Парола: " + userEntity.getPassword() + "\n" +
                 "Верификационен КОД: " + verificationCode + "\n" +
                 "--------------------------------------------------------\n\n" +
                 "За да влезнете в системата използвайте вашият Имейл и Парола.\n" +
@@ -40,11 +43,12 @@ public class EmailService {
                 "Бъдете разумни !\n" +
                 "Вашият глас вече има значение !";
 
-        sendSimpleEmail(user.getEmail(), subject, text);
-        System.out.println("Send registration email to " + user.getEmail());
+        sendSimpleEmail(userEntity.getEmail(), subject, text);
+        System.out.println("Send registration email to " + userEntity.getEmail());
     }
 
-    private void sendSimpleEmail(String to, String subject, String text) {
+    @Override
+    public void sendSimpleEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject(subject);
@@ -60,6 +64,7 @@ public class EmailService {
         }
     }
 
+    @Override
     public void sendVoteEmail(String userEmail, int candidateCode) {
         String subject = "МЕСТНИ ИЗБОРИ 2023 Упражнен Вот";
         String candidateName = getCandidateName(candidateCode);
@@ -72,7 +77,8 @@ public class EmailService {
         System.out.println("Send VOTE email to " + userEmail);
     }
 
-    private String getCandidateName(int candidateCode) {
+    @Override
+    public String getCandidateName(int candidateCode) {
         String candidaName = "";
         switch (candidateCode) {
             case 1:
@@ -88,6 +94,7 @@ public class EmailService {
         return candidaName;
     }
 
+    @Override
     public String getCurrentDateTime() {
         LocalDateTime currentDateTime = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

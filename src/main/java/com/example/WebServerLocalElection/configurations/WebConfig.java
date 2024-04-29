@@ -1,4 +1,4 @@
-package com.example.WebServerLocalElection;
+package com.example.WebServerLocalElection.configurations;
 
 
 import org.springframework.context.annotation.Configuration;
